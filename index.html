@@ -1,461 +1,239 @@
 
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#080b18">
-  <meta name="description" content="QAVZELTeam - Discord Bot開発プロジェクト">
-  <title>QAVZEL Core | QAVZELTeam</title>
-
-  <link rel="icon" href="assets/qavzel-logo.png">
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f8faff">
+  <meta name="description" content="QAVZEL Team — アイデアを、確かなカタチへ。">
+  <title>QAVZEL Team | Official</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
-  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
-  <div class="ambient ambient-one"></div>
-  <div class="ambient ambient-two"></div>
 
-  <header class="site-header">
-    <a class="brand" href="#top">
-      <img src="assets/qavzel-logo.png" alt="QAVZEL">
-      <span>
-        QAVZEL
-        <span class="brand-team">TEAM</span>
-      </span>
-    </a>
+<header class="header">
+  <a class="logo" href="#home">
+    <span class="logo-icon">Q</span>
+    QAVZEL <span>Team</span>
+  </a>
 
-    <button class="menu-toggle"
-            aria-label="メニューを開く"
-            aria-expanded="false">
-      ☰
+  <button class="menu-toggle" aria-label="メニュー">☰</button>
+
+  <nav class="nav">
+    <a href="#about">ABOUT</a>
+    <a href="#projects">PROJECTS</a>
+    <a href="#technology">TECHNOLOGIES</a>
+    <a href="#contact">CONTACT</a>
+    <button id="languageToggle" class="language">
+      <span>文A</span> EN
     </button>
+  </nav>
+</header>
 
-    <nav class="nav">
-      <a href="#about">概要</a>
-      <a href="#features">機能</a>
-      <a href="#details">詳細</a>
-      <a href="#commands">コマンド</a>
-    </nav>
-  </header>
+<main>
 
-  <main id="top">
+<section class="hero" id="home">
+  <div class="hero-content">
+    <div class="eyebrow">INDEPENDENT DEVELOPMENT TEAM</div>
 
-    <!-- メインビジュアル -->
-    <section class="hero">
-      <div class="hero-copy">
-        <div class="eyebrow">
-          <span class="live-dot"></span>
-          QAVZELTEAM / 開発プロジェクト
-        </div>
+    <h1>
+      Ideas into<br>
+      <span class="gradient">Reality.</span>
+    </h1>
 
-        <p class="hero-kicker">
-          サーバー管理を、もっとシンプルに。
-        </p>
+    <h2 data-ja="アイデアを、確かなカタチへ。"
+        data-en="Turning ideas into something real.">
+      アイデアを、確かなカタチへ。
+    </h2>
 
-        <h1>
-          サーバー運営を、<br>
-          <span>もっとスマートに。</span>
-        </h1>
+    <p data-ja="QAVZEL Teamは、ソフトウェアやWebサービスの開発を中心に、技術と創造力を活かしたプロジェクトに取り組む開発チームです。"
+       data-en="QAVZEL Team is an independent development team focused on software and web services, bringing ideas to life through technology and creativity.">
+      QAVZEL Teamは、ソフトウェアやWebサービスの開発を中心に、技術と創造力を活かしたプロジェクトに取り組む開発チームです。
+    </p>
 
-        <p class="hero-lead">
-          管理に必要な機能を、ひとつのBotに。<br>
-          日々の運営を支えるオールインワンDiscord管理Bot。
-        </p>
+    <div class="hero-buttons">
+      <a href="#projects" class="button primary">
+        プロジェクトを見る ↗
+      </a>
+      <a href="#about" class="button secondary">
+        チームについて →
+      </a>
+    </div>
 
-        <div class="hero-actions">
-          <a class="button button-primary" href="#features">
-            機能を見る <span>↓</span>
-          </a>
-          <a class="button button-ghost" href="#about">
-            プロジェクト概要 <span>↗</span>
-          </a>
-        </div>
+    <div class="hero-caption">
+      Curiosity drives creation.
+    </div>
+  </div>
 
-        <div class="hero-note">
-          ✦ モデレーション · ログ管理 · 認証 · 自動検知
-        </div>
+  <div class="hero-art">
+    <div class="orbit orbit-one"></div>
+    <div class="orbit orbit-two"></div>
+    <div class="sphere"></div>
+
+    <div class="floating-card card-one">
+      ✦ CREATE
+    </div>
+
+    <div class="floating-card card-two">
+      <div class="card-logo">Q</div>
+      <div>
+        <strong>QAVZEL</strong>
+        <small>DEVELOPMENT TEAM</small>
       </div>
+    </div>
+  </div>
+</section>
 
-      <div class="hero-visual">
-        <div class="visual-glow"></div>
+<div class="intro-strip">
+  <span>OUR APPROACH</span>
+  <strong>小さな発想から、使う人に届く体験を。</strong>
+  <span class="star">✳</span>
+</div>
 
-        <img
-          src="assets/qavzel-logo.png"
-          alt="QAVZEL ロゴ"
-          class="hero-logo"
-        >
+<section class="section" id="about">
+  <div class="section-label">01 / ABOUT</div>
 
-        <div class="orbit orbit-a"></div>
-        <div class="orbit orbit-b"></div>
+  <h2>
+    技術を楽しみ、<br>
+    <span class="gradient">より良い体験をつくる。</span>
+  </h2>
 
-        <div class="float-card card-top">
-          <span class="mini-icon">⌘</span>
-          <div>
-            <b>管理機能</b>
-            <small>サーバー管理ツール</small>
-          </div>
+  <div class="about-grid">
+    <h3>
+      QAVZEL Teamは、アイデアを形にすることを大切にする独立系の開発チームです。
+    </h3>
+
+    <div>
+      <p>
+        日々の課題や「あったらいいな」という発想を出発点に、
+        Discord Bot、Webサイト、便利なツールなどの開発に取り組んでいます。
+        企画から実装、改善まで、一つひとつのプロジェクトに向き合いながら、
+        技術と表現の可能性を広げていきます。
+      </p>
+
+      <div class="values">
+        <div><b>01</b>探求する</div>
+        <div><b>02</b>形にする</div>
+        <div><b>03</b>改善し続ける</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="projects-section" id="projects">
+  <div class="section">
+    <div class="section-label">02 / PROJECTS</div>
+    <h2>取り組んでいること。</h2>
+
+    <p class="section-description">
+      目的に合わせたソフトウェアやサービスを、企画・開発しています。
+    </p>
+
+    <div class="project-grid">
+
+      <article class="project-card">
+        <div class="project-visual visual-one">
+          <span>⌘</span>
         </div>
-
-        <div class="float-card card-bottom">
-          <span class="mini-icon">◈</span>
-          <div>
-            <b>サーバー保護</b>
-            <small>自動モデレーション</small>
-          </div>
-        </div>
-      </div>
-
-      <div class="hero-scroll">
-        スクロールして詳しく見る　↓
-      </div>
-    </section>
-
-    <!-- ブランドバナー -->
-    <section class="banner-strip">
-      <img
-        src="assets/qavzel-banner.png"
-        alt="QAVZEL ブランドビジュアル"
-      >
-    </section>
-
-    <!-- プロジェクト概要 -->
-    <section id="about" class="intro section-wrap">
-      <div class="section-label">
-        01 / プロジェクト概要
-      </div>
-
-      <div class="intro-content">
-        <h2>
-          必要な管理機能を、<br>
-          <span>ひとつに集約。</span>
-        </h2>
-
+        <small>PROJECT 01 / DISCORD AUTOMATION</small>
+        <h3>Discord Bot</h3>
         <p>
-          QAVZEL Coreは、Discordサーバーの管理・保護・運営を
-          サポートする多機能Botです。
-          処罰や警告の管理から、ログの記録、認証、
-          チケット対応まで。サーバー管理に必要な機能をまとめています。
+          サーバー運営をサポートする管理・自動化機能の開発。
         </p>
+      </article>
 
-        <div class="project-status">
-          <span class="status-dot"></span>
-          個人開発プロジェクト / 個人利用
+      <article class="project-card">
+        <div class="project-visual visual-two">
+          <span>⌁</span>
         </div>
-      </div>
-    </section>
-
-    <!-- 主な機能 -->
-    <section id="features" class="section-wrap features-section">
-      <div class="section-heading">
-        <div>
-          <div class="section-label">
-            02 / 主な機能
-          </div>
-
-          <h2>
-            運営を支える、<span>主な機能。</span>
-          </h2>
-        </div>
-
+        <small>PROJECT 02 / WEB DEVELOPMENT</small>
+        <h3>Web Services</h3>
         <p>
-          日常の管理作業をひとつずつ、<br>
-          使いやすいコマンドとパネルに。
+          使いやすさとデザインを意識したWebサイト・サービス。
         </p>
-      </div>
+      </article>
 
-      <div class="feature-grid">
-
-        <article class="feature-card">
-          <div class="feature-number">01</div>
-          <div class="feature-icon">⚖</div>
-
-          <h3>モデレーション</h3>
-
-          <p>
-            Kick・BAN・Timeout・警告などを一元管理。
-            処罰理由や履歴をケースとして記録し、
-            警告回数に応じた自動処罰も設定できます。
-          </p>
-
-          <div class="tag-row">
-            <span>警告管理</span>
-            <span>処罰履歴</span>
-            <span>自動処罰</span>
-          </div>
-        </article>
-
-        <article class="feature-card">
-          <div class="feature-number">02</div>
-          <div class="feature-icon">▤</div>
-
-          <h3>ログ管理</h3>
-
-          <p>
-            メッセージの編集・削除、参加・退出、
-            ロール変更、VC移動などを記録。
-            検索やCSV出力にも対応。
-          </p>
-
-          <div class="tag-row">
-            <span>イベントログ</span>
-            <span>CSV出力</span>
-          </div>
-        </article>
-
-        <article class="feature-card">
-          <div class="feature-number">03</div>
-          <div class="feature-icon">⌁</div>
-
-          <h3>自動検知</h3>
-
-          <p>
-            招待リンク、連投、同じ内容の連投、
-            大量メンションを検知。
-            検知時の対応や対象外設定も調整できます。
-          </p>
-
-          <div class="tag-row">
-            <span>スパム対策</span>
-            <span>詳細設定</span>
-          </div>
-        </article>
-
-        <article class="feature-card">
-          <div class="feature-number">04</div>
-          <div class="feature-icon">◈</div>
-
-          <h3>認証システム</h3>
-
-          <p>
-            画像認証またはWeb認証に対応。
-            認証完了後にロールを付与し、
-            メンバー管理をサポートします。
-          </p>
-
-          <div class="tag-row">
-            <span>画像認証</span>
-            <span>Web認証</span>
-          </div>
-        </article>
-
-        <article class="feature-card">
-          <div class="feature-number">05</div>
-          <div class="feature-icon">▣</div>
-
-          <h3>チケット</h3>
-
-          <p>
-            問い合わせ窓口を作成。
-            プライベートチャンネル方式と
-            フォーラム投稿方式から選べます。
-          </p>
-
-          <div class="tag-row">
-            <span>非公開チャンネル</span>
-            <span>フォーラム</span>
-          </div>
-        </article>
-
-        <article class="feature-card">
-          <div class="feature-number">06</div>
-          <div class="feature-icon">☷</div>
-
-          <h3>ルール・ロールパネル</h3>
-
-          <p>
-            ルール同意やロール選択をパネル化。
-            ボタン、ドロップダウン、チェックボックス、
-            リアクション式に対応。
-          </p>
-
-          <div class="tag-row">
-            <span>ルールパネル</span>
-            <span>ロールパネル</span>
-          </div>
-        </article>
-
-      </div>
-    </section>
-
-    <!-- カスタマイズ -->
-    <section id="details" class="details-section">
-      <div class="section-wrap">
-        <div class="section-label">
-          03 / カスタマイズ
+      <article class="project-card">
+        <div class="project-visual visual-three">
+          <span>✳</span>
         </div>
-
-        <div class="details-grid">
-          <div>
-            <h2>
-              サーバーに合わせて、<br>
-              <span>細かくカスタマイズ。</span>
-            </h2>
-
-            <p class="details-lead">
-              機能のON/OFFや動作、パネルの表示内容・
-              デザインなどをコマンドから設定できます。
-            </p>
-          </div>
-
-          <div class="detail-list">
-
-            <div class="detail-row">
-              <span class="detail-index">A</span>
-
-              <div>
-                <b>設定を柔軟に変更</b>
-                <small>
-                  自動検知のしきい値や対応、ログ対象などを調整。
-                </small>
-              </div>
-
-              <span class="detail-arrow">↗</span>
-            </div>
-
-            <div class="detail-row">
-              <span class="detail-index">B</span>
-
-              <div>
-                <b>パネルの見た目も編集</b>
-                <small>
-                  文章やボタンの色、表示先などを後から変更。
-                </small>
-              </div>
-
-              <span class="detail-arrow">↗</span>
-            </div>
-
-            <div class="detail-row">
-              <span class="detail-index">C</span>
-
-              <div>
-                <b>状態をコマンドで確認</b>
-                <small>
-                  /botcheck で権限や設定の状態を診断。
-                </small>
-              </div>
-
-              <span class="detail-arrow">↗</span>
-            </div>
-
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- コマンド -->
-    <section id="commands" class="commands section-wrap">
-      <div class="section-heading">
-        <div>
-          <div class="section-label">
-            04 / コマンド
-          </div>
-
-          <h2>
-            シンプルな<span>スラッシュコマンド。</span>
-          </h2>
-        </div>
-
+        <small>PROJECT 03 / EXPERIMENTS</small>
+        <h3>Tools & Experiments</h3>
         <p>
-          Discord上から必要な操作へ<br>
-          すばやくアクセス。
+          日常を少し便利にするツールや、新しい技術の検証。
         </p>
-      </div>
+      </article>
 
-      <div class="command-panel">
-        <div class="terminal-top">
-          <span></span>
-          <span></span>
-          <span></span>
-          <small>QAVZEL CORE / コマンド表示例</small>
-        </div>
+    </div>
 
-        <div class="command-line">
-          <span class="prompt">/</span>
-          <b>botcheck</b>
-          <em>権限・設定の診断</em>
-          <i>準備完了</i>
-        </div>
+    <p class="footnote">
+      ※ 掲載内容は活動分野の紹介です。公開可能なプロジェクトは順次追加します。
+    </p>
+  </div>
+</section>
 
-        <div class="command-line">
-          <span class="prompt">/</span>
-          <b>logsetup auto</b>
-          <em>ログの送信先をセットアップ</em>
-          <i>設定</i>
-        </div>
+<section class="section" id="technology">
+  <div class="section-label">03 / TECHNOLOGIES</div>
 
-        <div class="command-line">
-          <span class="prompt">/</span>
-          <b>panel verify</b>
-          <em>認証パネルを作成</em>
-          <i>認証</i>
-        </div>
+  <h2>
+    技術を組み合わせ、<br>
+    <span class="gradient">アイデアを実装する。</span>
+  </h2>
 
-        <div class="command-line">
-          <span class="prompt">/</span>
-          <b>rolepanel create</b>
-          <em>ロールパネルを作成</em>
-          <i>ロール</i>
-        </div>
+  <p class="section-description">
+    プロジェクトの目的や要件に合わせて、適切な技術を選択します。
+  </p>
 
-        <div class="command-line">
-          <span class="prompt">/</span>
-          <b>warnrule add</b>
-          <em>警告回数に応じた処罰を設定</em>
-          <i>管理</i>
-        </div>
-      </div>
-    </section>
+  <div class="technology-list">
+    <div><b>01</b><strong>Python</strong><span>Automation / Backend</span></div>
+    <div><b>02</b><strong>JavaScript</strong><span>Frontend / Backend</span></div>
+    <div><b>03</b><strong>HTML & CSS</strong><span>Web Design / Interface</span></div>
+    <div><b>04</b><strong>Cloudflare</strong><span>Web Hosting / Infrastructure</span></div>
+  </div>
+</section>
 
-    <!-- プロジェクト紹介 -->
-    <section class="project-section">
-      <div class="section-wrap project-card">
-        <div class="project-orb"></div>
+<section class="contact" id="contact">
+  <div class="section-label">04 / CONTACT</div>
 
-        <div class="section-label">
-          05 / 開発プロジェクト
-        </div>
+  <h2>
+    次のアイデアを、<br>
+    ここから。
+  </h2>
 
-        <h2>
-          管理をもっと快適に。<br>
-          <span>使いやすさを大切に。</span>
-        </h2>
+  <p>
+    QAVZEL Teamの活動やプロジェクトに関するお問い合わせは、
+    以下の連絡先をご利用ください。
+  </p>
 
-        <p>
-          QAVZEL Coreは、QAVZELTeamが開発・運用する
-          個人プロジェクトです。
-          日々の運用を通じて、機能や使いやすさの改善を続けています。
-        </p>
+  <!-- 公開前に実際のメールアドレスへ変更 -->
+  <a href="mailto:contact@example.com" class="button contact-button">
+    お問い合わせ ↗
+  </a>
 
-        <div class="project-badges">
-          <span>個人開発</span>
-          <span>個人利用</span>
-          <span>QAVZELTEAM</span>
-        </div>
-      </div>
-    </section>
+  <div class="contact-decoration">Q.</div>
+</section>
 
-  </main>
+</main>
 
-  <footer class="footer">
-    <a class="footer-brand" href="#top">
-      <img src="assets/qavzel-logo.png" alt="">
-      <b>QAVZEL<span>TEAM</span></b>
+<footer>
+  <div class="footer-top">
+    <a class="logo" href="#home">
+      <span class="logo-icon">Q</span>
+      QAVZEL <span>Team</span>
     </a>
+    <span>Ideas into Reality.</span>
+    <a href="#home" class="back-top">↑</a>
+  </div>
 
-    <p>限界を超えるものづくり。</p>
+  <div class="footer-bottom">
+    <span>© 2026 QAVZEL Team. All rights reserved.</span>
+    <span>Independent Development Team</span>
+  </div>
+</footer>
 
-    <small>
-      © 2026 QAVZELTeam. All rights reserved.
-    </small>
-  </footer>
-
-  <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
