@@ -5,235 +5,931 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#f8faff">
-  <meta name="description" content="QAVZEL Team — アイデアを、確かなカタチへ。">
+  <meta name="description" content="QAVZEL Team - Ideas into Reality. Independent Development Team.">
   <title>QAVZEL Team | Official</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;600;700;800&display=swap');
+
+    :root {
+      --bg: #f8faff;
+      --text: #182238;
+      --muted: #69758c;
+      --blue: #5578f5;
+      --purple: #9270f5;
+      --cyan: #54c9e8;
+      --border: rgba(90, 110, 160, .13);
+      --shadow: 0 18px 55px rgba(68, 91, 155, .09);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 90px;
+    }
+
+    body {
+      font-family: Inter, "Noto Sans JP", sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.8;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    .background-glow {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: -1;
+      overflow: hidden;
+    }
+
+    .glow {
+      position: absolute;
+      width: 520px;
+      height: 520px;
+      border-radius: 50%;
+      filter: blur(110px);
+      opacity: .19;
+    }
+
+    .glow.one {
+      background: #8e9fff;
+      top: -240px;
+      left: -150px;
+    }
+
+    .glow.two {
+      background: #c5a3ff;
+      right: -220px;
+      top: 500px;
+    }
+
+    .glow.three {
+      background: #80e1ef;
+      bottom: -300px;
+      left: 25%;
+    }
+
+    .container {
+      width: min(1120px, calc(100% - 48px));
+      margin: auto;
+    }
+
+    /* HEADER */
+
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 100;
+      background: rgba(255,255,255,.78);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .navbar {
+      height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      font-size: 19px;
+      letter-spacing: -.7px;
+    }
+
+    .logo-icon {
+      width: 37px;
+      height: 37px;
+      display: grid;
+      place-items: center;
+      border-radius: 12px;
+      color: white;
+      background: linear-gradient(135deg, var(--blue), var(--purple));
+      box-shadow: 0 6px 18px rgba(100, 112, 240, .25);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 31px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 12px;
+      font-weight: 700;
+      color: #59657d;
+      transition: .2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--blue);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .language-button {
+      width: 42px;
+      height: 42px;
+      border: 1px solid var(--border);
+      background: white;
+      border-radius: 13px;
+      color: var(--text);
+      cursor: pointer;
+      font-size: 17px;
+      font-weight: 700;
+      transition: .2s;
+    }
+
+    .language-button:hover {
+      background: #f0f2ff;
+      border-color: #c4caff;
+    }
+
+    .menu-button {
+      display: none;
+      width: 42px;
+      height: 42px;
+      border: 1px solid var(--border);
+      background: white;
+      border-radius: 12px;
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    /* HERO */
+
+    .hero {
+      min-height: 760px;
+      display: flex;
+      align-items: center;
+      padding: 140px 0 100px;
+      position: relative;
+    }
+
+    .hero-content {
+      max-width: 760px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 8px 15px;
+      border: 1px solid rgba(103, 124, 240, .18);
+      background: rgba(255,255,255,.8);
+      border-radius: 30px;
+      color: #6579df;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      margin-bottom: 28px;
+    }
+
+    .eyebrow-dot {
+      width: 7px;
+      height: 7px;
+      background: #65cbb9;
+      border-radius: 50%;
+      box-shadow: 0 0 12px #65cbb9;
+    }
+
+    .hero h1 {
+      font-size: clamp(52px, 8vw, 96px);
+      line-height: 1.08;
+      letter-spacing: -5px;
+      font-weight: 800;
+      margin-bottom: 27px;
+    }
+
+    .gradient-text {
+      background: linear-gradient(100deg, #5578f5 5%, #9270f5 52%, #50c7e3 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-description {
+      max-width: 590px;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 2.1;
+      margin-bottom: 35px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 13px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 51px;
+      padding: 0 23px;
+      border-radius: 14px;
+      font-size: 13px;
+      font-weight: 700;
+      transition: .25s;
+    }
+
+    .button-primary {
+      color: white;
+      background: linear-gradient(110deg, var(--blue), var(--purple));
+      box-shadow: 0 9px 25px rgba(101, 112, 238, .23);
+    }
+
+    .button-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 14px 30px rgba(101, 112, 238, .3);
+    }
+
+    .button-secondary {
+      background: white;
+      border: 1px solid var(--border);
+      color: var(--text);
+    }
+
+    .button-secondary:hover {
+      transform: translateY(-3px);
+      border-color: #aab7ff;
+    }
+
+    .hero-bottom {
+      position: absolute;
+      bottom: 35px;
+      left: 0;
+      width: 100%;
+      color: #9aa4b8;
+      font-size: 10px;
+      letter-spacing: 2px;
+    }
+
+    /* COMMON SECTION */
+
+    section {
+      padding: 110px 0;
+    }
+
+    .section-label {
+      color: var(--blue);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      margin-bottom: 17px;
+    }
+
+    .section-heading {
+      font-size: clamp(29px, 4vw, 43px);
+      line-height: 1.5;
+      letter-spacing: -1.5px;
+      font-weight: 800;
+      margin-bottom: 18px;
+    }
+
+    .section-description {
+      color: var(--muted);
+      font-size: 14px;
+      max-width: 650px;
+      line-height: 2;
+    }
+
+    /* ABOUT */
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 75px;
+      align-items: center;
+    }
+
+    .about-panel {
+      min-height: 330px;
+      border-radius: 28px;
+      padding: 40px;
+      background: linear-gradient(135deg, #e9edff, #f1eaff 55%, #e5faff);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .about-panel::after {
+      content: "Q";
+      position: absolute;
+      right: -10px;
+      bottom: -115px;
+      font-size: 330px;
+      font-weight: 800;
+      color: rgba(255,255,255,.45);
+      line-height: 1;
+    }
+
+    .about-symbol {
+      width: 64px;
+      height: 64px;
+      border-radius: 19px;
+      display: grid;
+      place-items: center;
+      color: white;
+      font-size: 29px;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--blue), var(--purple));
+      box-shadow: 0 10px 25px rgba(100, 112, 240, .25);
+    }
+
+    .about-panel-text {
+      position: relative;
+      z-index: 1;
+    }
+
+    .about-panel-text strong {
+      display: block;
+      font-size: 24px;
+      margin-bottom: 5px;
+    }
+
+    .about-panel-text span {
+      color: #747e9b;
+      font-size: 12px;
+      letter-spacing: 1px;
+    }
+
+    /* PROJECTS */
+
+    .projects-section {
+      background: rgba(239,243,255,.55);
+      border-top: 1px solid rgba(100,120,180,.08);
+      border-bottom: 1px solid rgba(100,120,180,.08);
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+      margin-top: 48px;
+    }
+
+    .project-card {
+      background: rgba(255,255,255,.9);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 29px;
+      min-height: 260px;
+      box-shadow: 0 8px 30px rgba(70,90,150,.035);
+      transition: .3s;
+    }
+
+    .project-card:hover {
+      transform: translateY(-7px);
+      box-shadow: var(--shadow);
+      border-color: rgba(112,127,245,.3);
+    }
+
+    .project-icon {
+      width: 49px;
+      height: 49px;
+      display: grid;
+      place-items: center;
+      border-radius: 15px;
+      font-size: 22px;
+      margin-bottom: 28px;
+      background: linear-gradient(135deg, #e9edff, #f1eaff);
+    }
+
+    .project-number {
+      color: #8996b4;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      margin-bottom: 8px;
+    }
+
+    .project-card h3 {
+      font-size: 19px;
+      margin-bottom: 12px;
+    }
+
+    .project-card p {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 2;
+    }
+
+    .project-note {
+      margin-top: 25px;
+      font-size: 11px;
+      color: #8994a9;
+    }
+
+    /* TECHNOLOGIES */
+
+    .tech-layout {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .tech-list {
+      display: grid;
+      gap: 13px;
+    }
+
+    .tech-item {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      padding: 19px 22px;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      transition: .2s;
+    }
+
+    .tech-item:hover {
+      transform: translateX(5px);
+      border-color: #b9c4ff;
+    }
+
+    .tech-number {
+      color: #9aa8d2;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .tech-name {
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .tech-detail {
+      display: block;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 400;
+    }
+
+    /* CONTACT */
+
+    .contact-section {
+      padding-top: 70px;
+    }
+
+    .contact-panel {
+      text-align: center;
+      padding: 85px 30px;
+      border-radius: 30px;
+      background: linear-gradient(115deg, #e9eeff, #f0eaff 55%, #e5faff);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contact-panel::before,
+    .contact-panel::after {
+      content: "";
+      position: absolute;
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.45);
+      filter: blur(5px);
+    }
+
+    .contact-panel::before {
+      top: -130px;
+      left: -50px;
+    }
+
+    .contact-panel::after {
+      bottom: -140px;
+      right: -40px;
+    }
+
+    .contact-panel > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .contact-panel .section-heading {
+      margin-bottom: 15px;
+    }
+
+    .contact-panel .section-description {
+      margin: 0 auto 28px;
+    }
+
+    /* FOOTER */
+
+    footer {
+      padding: 38px 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .footer-brand {
+      font-weight: 800;
+      font-size: 15px;
+    }
+
+    .footer-copy {
+      color: #929caf;
+      font-size: 10px;
+      text-align: right;
+    }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 850px) {
+      .nav-links {
+        gap: 17px;
+      }
+
+      .about-grid,
+      .tech-layout {
+        gap: 35px;
+      }
+
+      .projects-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 650px) {
+      .container {
+        width: min(100% - 36px, 520px);
+      }
+
+      .navbar {
+        height: 68px;
+      }
+
+      .menu-button {
+        display: block;
+      }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 68px;
+        left: 0;
+        width: 100%;
+        padding: 20px 25px 25px;
+        background: rgba(255,255,255,.97);
+        border-bottom: 1px solid var(--border);
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 19px;
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .hero {
+        min-height: 690px;
+        padding-top: 130px;
+      }
+
+      .hero h1 {
+        font-size: clamp(48px, 13vw, 70px);
+        letter-spacing: -3px;
+      }
+
+      .hero-description {
+        font-size: 13px;
+      }
+
+      section {
+        padding: 80px 0;
+      }
+
+      .about-grid,
+      .tech-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .about-panel {
+        min-height: 270px;
+      }
+
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .project-card {
+        min-height: 220px;
+      }
+
+      .contact-panel {
+        padding: 65px 20px;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .footer-copy {
+        text-align: left;
+      }
+    }
+  </style>
 </head>
+
 <body>
-
-<header class="header">
-  <a class="logo" href="#home">
-    <span class="logo-icon">Q</span>
-    QAVZEL <span>Team</span>
-  </a>
-
-  <button class="menu-toggle" aria-label="メニュー">☰</button>
-
-  <nav class="nav">
-    <a href="#about">ABOUT</a>
-    <a href="#projects">PROJECTS</a>
-    <a href="#technology">TECHNOLOGIES</a>
-    <a href="#contact">CONTACT</a>
-    <button id="languageToggle" class="language">
-      <span>文A</span> EN
-    </button>
-  </nav>
-</header>
-
-<main>
-
-<section class="hero" id="home">
-  <div class="hero-content">
-    <div class="eyebrow">INDEPENDENT DEVELOPMENT TEAM</div>
-
-    <h1>
-      Ideas into<br>
-      <span class="gradient">Reality.</span>
-    </h1>
-
-    <h2 data-ja="アイデアを、確かなカタチへ。"
-        data-en="Turning ideas into something real.">
-      アイデアを、確かなカタチへ。
-    </h2>
-
-    <p data-ja="QAVZEL Teamは、ソフトウェアやWebサービスの開発を中心に、技術と創造力を活かしたプロジェクトに取り組む開発チームです。"
-       data-en="QAVZEL Team is an independent development team focused on software and web services, bringing ideas to life through technology and creativity.">
-      QAVZEL Teamは、ソフトウェアやWebサービスの開発を中心に、技術と創造力を活かしたプロジェクトに取り組む開発チームです。
-    </p>
-
-    <div class="hero-buttons">
-      <a href="#projects" class="button primary">
-        プロジェクトを見る ↗
-      </a>
-      <a href="#about" class="button secondary">
-        チームについて →
-      </a>
-    </div>
-
-    <div class="hero-caption">
-      Curiosity drives creation.
-    </div>
+  <div class="background-glow">
+    <div class="glow one"></div>
+    <div class="glow two"></div>
+    <div class="glow three"></div>
   </div>
 
-  <div class="hero-art">
-    <div class="orbit orbit-one"></div>
-    <div class="orbit orbit-two"></div>
-    <div class="sphere"></div>
+  <header>
+    <div class="container navbar">
+      <a href="#home" class="logo">
+        <span class="logo-icon">Q</span>
+        <span>QAVZEL Team</span>
+      </a>
 
-    <div class="floating-card card-one">
-      ✦ CREATE
+      <nav>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#home" data-ja="ホーム" data-en="HOME">ホーム</a></li>
+          <li><a href="#about" data-ja="チームについて" data-en="ABOUT">チームについて</a></li>
+          <li><a href="#projects" data-ja="プロジェクト" data-en="PROJECTS">プロジェクト</a></li>
+          <li><a href="#technologies" data-ja="技術" data-en="TECHNOLOGIES">技術</a></li>
+          <li><a href="#contact" data-ja="お問い合わせ" data-en="CONTACT">お問い合わせ</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="language-button" id="languageButton" aria-label="言語を切り替える">文A</button>
+        <button class="menu-button" id="menuButton" aria-label="メニューを開く">☰</button>
+      </div>
     </div>
+  </header>
 
-    <div class="floating-card card-two">
-      <div class="card-logo">Q</div>
+  <main>
+    <!-- HOME -->
+    <section class="hero" id="home">
+      <div class="container">
+        <div class="hero-content">
+          <div class="eyebrow">
+            <span class="eyebrow-dot"></span>
+            INDEPENDENT DEVELOPMENT TEAM
+          </div>
+
+          <h1>
+            Ideas into<br>
+            <span class="gradient-text">Reality.</span>
+          </h1>
+
+          <p class="hero-description"
+             data-ja="アイデアを形にし、技術で新しい可能性を生み出す。QAVZEL Teamは、ソフトウェアやWebサービスなどの開発に取り組む独立系開発チームです。"
+             data-en="Turning ideas into reality and creating new possibilities through technology. QAVZEL Team is an independent development team working on software and web services.">
+            アイデアを形にし、技術で新しい可能性を生み出す。QAVZEL Teamは、ソフトウェアやWebサービスなどの開発に取り組む独立系開発チームです。
+          </p>
+
+          <div class="hero-buttons">
+            <a href="#projects" class="button button-primary">
+              <span data-ja="プロジェクトを見る" data-en="Explore Projects">プロジェクトを見る</span>
+              <span>↗</span>
+            </a>
+            <a href="#about" class="button button-secondary">
+              <span data-ja="チームについて" data-en="About Us">チームについて</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-bottom">
+        <div class="container">CREATIVITY · TECHNOLOGY · DEVELOPMENT</div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="container about-grid">
+        <div>
+          <div class="section-label">01 / ABOUT</div>
+          <h2 class="section-heading"
+              data-ja="技術とアイデアで、<br>新しい価値をつくる。"
+              data-en="Creating new value<br>through ideas and technology.">
+            技術とアイデアで、<br>新しい価値をつくる。
+          </h2>
+          <p class="section-description"
+             data-ja="QAVZEL Teamは、ソフトウェア開発やWeb制作、さまざまな技術の検証に取り組む独立系開発チームです。使いやすさと機能性を大切にしながら、一つひとつのアイデアを形にしていきます。"
+             data-en="QAVZEL Team is an independent development team focused on software development, web design, and exploring new technologies. We turn ideas into reality with a focus on usability and functionality.">
+            QAVZEL Teamは、ソフトウェア開発やWeb制作、さまざまな技術の検証に取り組む独立系開発チームです。使いやすさと機能性を大切にしながら、一つひとつのアイデアを形にしていきます。
+          </p>
+        </div>
+
+        <div class="about-panel">
+          <div class="about-symbol">Q</div>
+          <div class="about-panel-text">
+            <strong>QAVZEL Team</strong>
+            <span>INDEPENDENT DEVELOPMENT</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section class="projects-section" id="projects">
+      <div class="container">
+        <div class="section-label">02 / PROJECTS</div>
+        <h2 class="section-heading"
+            data-ja="アイデアを、<br>プロジェクトという形に。"
+            data-en="Ideas brought to life<br>as projects.">
+          アイデアを、<br>プロジェクトという形に。
+        </h2>
+        <p class="section-description"
+           data-ja="さまざまな分野の技術を活用し、実用性のあるサービスやツールの開発を行っています。"
+           data-en="We develop practical services and tools using technologies from various fields.">
+          さまざまな分野の技術を活用し、実用性のあるサービスやツールの開発を行っています。
+        </p>
+
+        <div class="projects-grid">
+          <article class="project-card">
+            <div class="project-icon">⚙</div>
+            <div class="project-number">PROJECT 01 / SOFTWARE</div>
+            <h3>Discord Bots</h3>
+            <p data-ja="サーバー管理や運営を支援する、機能性と使いやすさを重視したDiscord Botの開発。"
+               data-en="Discord bot development focused on functionality and usability, supporting server management and administration.">
+              サーバー管理や運営を支援する、機能性と使いやすさを重視したDiscord Botの開発。
+            </p>
+          </article>
+
+          <article class="project-card">
+            <div class="project-icon">◇</div>
+            <div class="project-number">PROJECT 02 / WEB DEVELOPMENT</div>
+            <h3>Web Services</h3>
+            <p data-ja="使いやすさとデザインを意識したWebサイト・サービスの制作。"
+               data-en="Creating websites and web services with a focus on usability and design.">
+              使いやすさとデザインを意識したWebサイト・サービスの制作。
+            </p>
+          </article>
+
+          <article class="project-card">
+            <div class="project-icon">✳</div>
+            <div class="project-number">PROJECT 03 / EXPERIMENTS</div>
+            <h3>Tools & Experiments</h3>
+            <p data-ja="日常を少し便利にするツールや、新しい技術の検証。"
+               data-en="Developing useful everyday tools and exploring new technologies.">
+              日常を少し便利にするツールや、新しい技術の検証。
+            </p>
+          </article>
+        </div>
+
+        <p class="project-note"
+           data-ja="※ 掲載内容は活動分野の紹介です。公開可能なプロジェクトは順次追加します。"
+           data-en="※ These are areas of activity. Publicly available projects will be added over time.">
+          ※ 掲載内容は活動分野の紹介です。公開可能なプロジェクトは順次追加します。
+        </p>
+      </div>
+    </section>
+
+    <!-- TECHNOLOGIES -->
+    <section id="technologies">
+      <div class="container tech-layout">
+        <div>
+          <div class="section-label">03 / TECHNOLOGIES</div>
+          <h2 class="section-heading"
+              data-ja="技術を組み合わせ、<br>アイデアを実装する。"
+              data-en="Combining technologies<br>to bring ideas to life.">
+            技術を組み合わせ、<br>アイデアを実装する。
+          </h2>
+          <p class="section-description"
+             data-ja="プロジェクトの目的や要件に合わせて、適切な技術を選択します。"
+             data-en="We choose the right technologies according to each project's goals and requirements.">
+            プロジェクトの目的や要件に合わせて、適切な技術を選択します。
+          </p>
+        </div>
+
+        <div class="tech-list">
+          <div class="tech-item">
+            <span class="tech-number">01</span>
+            <div class="tech-name">Python<span class="tech-detail">Automation / Backend</span></div>
+          </div>
+          <div class="tech-item">
+            <span class="tech-number">02</span>
+            <div class="tech-name">JavaScript<span class="tech-detail">Frontend / Backend</span></div>
+          </div>
+          <div class="tech-item">
+            <span class="tech-number">03</span>
+            <div class="tech-name">HTML & CSS<span class="tech-detail">Web Design / Interface</span></div>
+          </div>
+          <div class="tech-item">
+            <span class="tech-number">04</span>
+            <div class="tech-name">Cloudflare<span class="tech-detail">Web Hosting / Infrastructure</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="contact-section" id="contact">
+      <div class="container">
+        <div class="contact-panel">
+          <div class="section-label">04 / CONTACT</div>
+          <h2 class="section-heading"
+              data-ja="次のアイデアを、<br>ここから。"
+              data-en="Your next idea<br>starts here.">
+            次のアイデアを、<br>ここから。
+          </h2>
+          <p class="section-description"
+             data-ja="QAVZEL Teamの活動やプロジェクトに関するお問い合わせは、以下の連絡先をご利用ください。"
+             data-en="For inquiries about QAVZEL Team and its projects, please use the contact page below.">
+            QAVZEL Teamの活動やプロジェクトに関するお問い合わせは、以下の連絡先をご利用ください。
+          </p>
+          <a href="https://contact.soraran.com" class="button button-primary" target="_blank" rel="noopener noreferrer">
+            <span data-ja="お問い合わせ" data-en="Contact Us">お問い合わせ</span>
+            <span>↗</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
       <div>
-        <strong>QAVZEL</strong>
-        <small>DEVELOPMENT TEAM</small>
+        <div class="footer-brand">QAVZEL Team</div>
+        <div class="footer-copy">Ideas into Reality.</div>
+      </div>
+      <div class="footer-copy">
+        © 2026 QAVZEL Team. All rights reserved.<br>
+        Independent Development Team
       </div>
     </div>
-  </div>
-</section>
+  </footer>
 
-<div class="intro-strip">
-  <span>OUR APPROACH</span>
-  <strong>小さな発想から、使う人に届く体験を。</strong>
-  <span class="star">✳</span>
-</div>
+  <script>
+    let currentLanguage = "ja";
 
-<section class="section" id="about">
-  <div class="section-label">01 / ABOUT</div>
+    const languageButton = document.getElementById("languageButton");
+    const menuButton = document.getElementById("menuButton");
+    const navLinks = document.getElementById("navLinks");
 
-  <h2>
-    技術を楽しみ、<br>
-    <span class="gradient">より良い体験をつくる。</span>
-  </h2>
+    function changeLanguage() {
+      currentLanguage = currentLanguage === "ja" ? "en" : "ja";
 
-  <div class="about-grid">
-    <h3>
-      QAVZEL Teamは、アイデアを形にすることを大切にする独立系の開発チームです。
-    </h3>
+      document.documentElement.lang = currentLanguage;
+      languageButton.textContent = currentLanguage === "ja" ? "文A" : "A文";
 
-    <div>
-      <p>
-        日々の課題や「あったらいいな」という発想を出発点に、
-        Discord Bot、Webサイト、便利なツールなどの開発に取り組んでいます。
-        企画から実装、改善まで、一つひとつのプロジェクトに向き合いながら、
-        技術と表現の可能性を広げていきます。
-      </p>
+      document.querySelectorAll("[data-ja][data-en]").forEach(element => {
+        element.innerHTML = element.dataset[currentLanguage];
+      });
+    }
 
-      <div class="values">
-        <div><b>01</b>探求する</div>
-        <div><b>02</b>形にする</div>
-        <div><b>03</b>改善し続ける</div>
-      </div>
-    </div>
-  </div>
-</section>
+    languageButton.addEventListener("click", changeLanguage);
 
-<section class="projects-section" id="projects">
-  <div class="section">
-    <div class="section-label">02 / PROJECTS</div>
-    <h2>取り組んでいること。</h2>
+    menuButton.addEventListener("click", () => {
+      navLinks.classList.toggle("open");
+      menuButton.textContent = navLinks.classList.contains("open") ? "✕" : "☰";
+    });
 
-    <p class="section-description">
-      目的に合わせたソフトウェアやサービスを、企画・開発しています。
-    </p>
-
-    <div class="project-grid">
-
-      <article class="project-card">
-        <div class="project-visual visual-one">
-          <span>⌘</span>
-        </div>
-        <small>PROJECT 01 / DISCORD AUTOMATION</small>
-        <h3>Discord Bot</h3>
-        <p>
-          サーバー運営をサポートする管理・自動化機能の開発。
-        </p>
-      </article>
-
-      <article class="project-card">
-        <div class="project-visual visual-two">
-          <span>⌁</span>
-        </div>
-        <small>PROJECT 02 / WEB DEVELOPMENT</small>
-        <h3>Web Services</h3>
-        <p>
-          使いやすさとデザインを意識したWebサイト・サービス。
-        </p>
-      </article>
-
-      <article class="project-card">
-        <div class="project-visual visual-three">
-          <span>✳</span>
-        </div>
-        <small>PROJECT 03 / EXPERIMENTS</small>
-        <h3>Tools & Experiments</h3>
-        <p>
-          日常を少し便利にするツールや、新しい技術の検証。
-        </p>
-      </article>
-
-    </div>
-
-    <p class="footnote">
-      ※ 掲載内容は活動分野の紹介です。公開可能なプロジェクトは順次追加します。
-    </p>
-  </div>
-</section>
-
-<section class="section" id="technology">
-  <div class="section-label">03 / TECHNOLOGIES</div>
-
-  <h2>
-    技術を組み合わせ、<br>
-    <span class="gradient">アイデアを実装する。</span>
-  </h2>
-
-  <p class="section-description">
-    プロジェクトの目的や要件に合わせて、適切な技術を選択します。
-  </p>
-
-  <div class="technology-list">
-    <div><b>01</b><strong>Python</strong><span>Automation / Backend</span></div>
-    <div><b>02</b><strong>JavaScript</strong><span>Frontend / Backend</span></div>
-    <div><b>03</b><strong>HTML & CSS</strong><span>Web Design / Interface</span></div>
-    <div><b>04</b><strong>Cloudflare</strong><span>Web Hosting / Infrastructure</span></div>
-  </div>
-</section>
-
-<section class="contact" id="contact">
-  <div class="section-label">04 / CONTACT</div>
-
-  <h2>
-    次のアイデアを、<br>
-    ここから。
-  </h2>
-
-  <p>
-    QAVZEL Teamの活動やプロジェクトに関するお問い合わせは、
-    以下の連絡先をご利用ください。
-  </p>
-
-  <!-- 公開前に実際のメールアドレスへ変更 -->
-  <a href="mailto:contact@example.com" class="button contact-button">
-    お問い合わせ ↗
-  </a>
-
-  <div class="contact-decoration">Q.</div>
-</section>
-
-</main>
-
-<footer>
-  <div class="footer-top">
-    <a class="logo" href="#home">
-      <span class="logo-icon">Q</span>
-      QAVZEL <span>Team</span>
-    </a>
-    <span>Ideas into Reality.</span>
-    <a href="#home" class="back-top">↑</a>
-  </div>
-
-  <div class="footer-bottom">
-    <span>© 2026 QAVZEL Team. All rights reserved.</span>
-    <span>Independent Development Team</span>
-  </div>
-</footer>
-
-<script src="script.js"></script>
+    document.querySelectorAll(".nav-links a").forEach(link => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("open");
+        menuButton.textContent = "☰";
+      });
+    });
+  </script>
 </body>
 </html>
