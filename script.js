@@ -1,38 +1,35 @@
-const toggle = document.querySelector(".menu-toggle");
+
+const languageToggle = document.getElementById("languageToggle");
+const menuToggle = document.querySelector(".menu-toggle");
 const nav = document.querySelector(".nav");
 
-if (toggle && nav) {
-  toggle.addEventListener("click", () => {
-    const opened = nav.classList.toggle("open");
+let currentLanguage = "ja";
 
-    toggle.setAttribute(
-      "aria-expanded",
-      String(opened)
-    );
+languageToggle.addEventListener("click", () => {
+  currentLanguage = currentLanguage === "ja" ? "en" : "ja";
 
-    toggle.setAttribute(
-      "aria-label",
-      opened ? "メニューを閉じる" : "メニューを開く"
-    );
+  document.documentElement.lang = currentLanguage;
 
-    toggle.textContent = opened ? "✕" : "☰";
+  document.querySelectorAll("[data-ja][data-en]").forEach(element => {
+    element.textContent = element.dataset[currentLanguage];
   });
 
-  nav.querySelectorAll("a").forEach((link) => {
-    link.addEventListener("click", () => {
-      nav.classList.remove("open");
+  languageToggle.innerHTML =
+    currentLanguage === "ja"
+      ? "<span>文A</span> EN"
+      : "<span>文A</span> JP";
+});
 
-      toggle.setAttribute(
-        "aria-expanded",
-        "false"
-      );
+menuToggle.addEventListener("click", () => {
+  nav.classList.toggle("open");
 
-      toggle.setAttribute(
-        "aria-label",
-        "メニューを開く"
-      );
+  menuToggle.textContent =
+    nav.classList.contains("open") ? "✕" : "☰";
+});
 
-      toggle.textContent = "☰";
-    });
+nav.querySelectorAll("a").forEach(link => {
+  link.addEventListener("click", () => {
+    nav.classList.remove("open");
+    menuToggle.textContent = "☰";
   });
-}
+});
